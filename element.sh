@@ -6,7 +6,6 @@ if [[ -z $1 ]]
 then
   echo "Please provide an element as an argument."
 else
-  # تحقق إذا كان المدخل رقماً أم نصاً
   if [[ $1 =~ ^[0-9]+$ ]]
   then
     QUERY="SELECT atomic_number, name, symbol, type, atomic_mass, melting_point_celsius, boiling_point_celsius FROM elements JOIN properties USING(atomic_number) JOIN types USING(type_id) WHERE atomic_number = $1;"
