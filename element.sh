@@ -5,7 +5,6 @@ if [[ -z $1 ]]
 then
   echo "Please provide an element as an argument."
 else
-  # Check if argument is atomic number, symbol, or name
   if [[ $1 =~ ^[0-9]+$ ]]
   then
     ELEMENT=$($PSQL "SELECT atomic_number, name, symbol, type, atomic_mass, melting_point_celsius, boiling_point_celsius FROM elements JOIN properties USING(atomic_number) JOIN types USING(type_id) WHERE atomic_number = $1;")
